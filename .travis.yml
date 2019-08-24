@@ -12,6 +12,25 @@ cache:
 
 script: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 
+before_deploy:
+  - zip -r springboot-sample *
+  - mkdir -p deploy
+  - mv springboot-sample.zip deploy/springboot-sample.zip
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings에 설정된 값
+    bucket: springboot-sample-deploy # 6-3-3에서 생성한 S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: public_read
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      repo: Sungwook-Choi/aws-sample #Github 주소
+      branch: master
+
 # CI 실행 완료시 메일로 알람
 notifications:
   email:
