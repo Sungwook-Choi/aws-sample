@@ -1,0 +1,15 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - master
+
+script: "./mvn clean package -e -U -Dmaven.test.skip=true"
+
+# CI 실행 완료시 메일로 알람
+notifications:
+  email:
+    recipients:
+      - mura2393@nate.com
