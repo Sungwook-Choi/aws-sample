@@ -6,7 +6,11 @@ branches:
   only:
     - master
 
-script: "./mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
+cache:
+    directories:
+    - $HOME/.m2
+
+script: "mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 
 # CI 실행 완료시 메일로 알람
 notifications:
