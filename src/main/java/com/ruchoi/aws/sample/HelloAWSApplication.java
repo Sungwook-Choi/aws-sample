@@ -15,6 +15,6 @@ public class HelloAWSApplication {
 
 	@RequestMapping(value = "/hello")
 	public String getProductName() {
-	   return "Honey";   
+	   return "Honey2";   
     }
 }
