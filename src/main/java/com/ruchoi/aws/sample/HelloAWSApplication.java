@@ -23,7 +23,7 @@ public class HelloAWSApplication {
 
 	@RequestMapping(value = "/hello")
 	public String getProductName() {
-	   return "Honey3";   
+	   return "Honey4";   
 	}
 
 	@GetMapping("/health")
